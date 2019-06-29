@@ -2,6 +2,7 @@
 
 MY_PATH="$(dirname $0)"
 MY_PATH="$(cd $MY_PATH && pwd)"
+AWS_SHARED_CREDENTIALS_FILE=$(dirname $MY_PATH)/aws-credentials
 
 BUCKET=$(echo $(grep "lambda_s3bucket" $MY_PATH/../terraform/terraform.tfvars | cut -d= -f2 | sed 's/"//g'))
 
