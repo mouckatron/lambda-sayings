@@ -10,5 +10,5 @@ while IFS= read -r line; do
         --item '{"id": {"N": "'$COUNTER'"}, "saying": {"S": "'"$line"'"}}'
     echo -n '.'
     COUNTER=$(($COUNTER+1))
-done < "sayings.txt"
+done < "$MY_PATH/sayings.txt"
 echo ""
