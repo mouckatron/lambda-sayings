@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"net/http"
 
@@ -22,7 +21,7 @@ type Saying struct {
 	Saying string
 }
 
-func HandleRequest(ctx context.Context, name MyEvent) (events.APIGatewayProxyResponse, error) {
+func HandleRequest(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		SharedConfigState: session.SharedConfigEnable,
@@ -35,7 +34,7 @@ func HandleRequest(ctx context.Context, name MyEvent) (events.APIGatewayProxyRes
 		TableName: aws.String("sayings"),
 		Key: map[string]*dynamodb.AttributeValue{
 			"id": {
-				N: aws.String("1"),
+				N: aws.String(req.QueryStringParameters["id"]),
 			},
 		},
 	})
