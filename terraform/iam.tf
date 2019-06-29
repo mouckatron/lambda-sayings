@@ -34,6 +34,7 @@ resource "aws_iam_role_policy" "sayings" {
                 "dynamodb:GetRecords",
                 "dynamodb:GetShardIterator",
                 "dynamodb:ListStreams",
+                "dynamodb:GetItem",
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
